@@ -232,6 +232,7 @@ createHttpMethod('patch', 'PATCH')
 createHttpMethod('post', 'POST')
 createHttpMethod('put', 'PUT')
 createHttpMethod('delete', 'DELETE')
+createHttpMethod('query', 'QUERY')
 
 export const STARTED = 'started'
 export const FINISHED = 'finished'
