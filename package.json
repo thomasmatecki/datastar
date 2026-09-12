@@ -1,0 +1,32 @@
+{
+  "name": "@thomasmatecki/datastar",
+  "version": "1.0.3",
+  "description": "The hypermedia framework.",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://data-star.dev/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasmatecki/datastar.git"
+  },
+  "publishConfig": {
+    "@thomasmatecki:registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "bundles"
+  ],
+  "exports": {
+    ".": "./bundles/datastar.js",
+    "./core": "./bundles/datastar-core.js",
+    "./aliased": "./bundles/datastar-aliased.js"
+  },
+  "scripts": {
+    "build": "npm run build:full && npm run build:core && npm run build:aliased",
+    "build:full": "esbuild library/src/bundles/datastar.ts --bundle --format=esm --minify --sourcemap --tsconfig=library/tsconfig.json --define:ALIAS=null --banner:js=\"// Datastar v1.0.3\" --outfile=bundles/datastar.js",
+    "build:core": "esbuild library/src/bundles/datastar-core.ts --bundle --format=esm --minify --sourcemap --tsconfig=library/tsconfig.json --define:ALIAS=null --banner:js=\"// Datastar Core v1.0.3\" --outfile=bundles/datastar-core.js",
+    "build:aliased": "esbuild library/src/bundles/datastar-aliased.ts --bundle --format=esm --minify --sourcemap --tsconfig=library/tsconfig.json --define:ALIAS='\"star\"' --banner:js=\"// Datastar Aliased v1.0.3\" --outfile=bundles/datastar-aliased.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}
